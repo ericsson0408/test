@@ -1,0 +1,158 @@
+import tkinter as tk 
+from PIL import Image, ImageTk
+window = tk.Tk()
+title_var='Image(page1)'
+window.title(title_var)
+window.geometry('1000x700')  
+
+#image_file
+def showimage(a_size,b_size,c):
+    image = Image.open(c)
+    image = image.resize((a_size, b_size), Image.ANTIALIAS)
+    return ImageTk.PhotoImage(image)
+
+x_size=300
+y_size=250
+
+lista=['L1A_01.jpg','L1A_02.jpg','L1A_03.jpg','L1A_04.jpg']
+listb=['L1B_01.jpg','L1B_02.jpg','L1B_03.jpg']
+list2a=['L2A_01.jpg','L2A_02.jpg','L2A_03.jpg','L2A_04.jpg']
+list2b=['L2B_01.jpg','L2B_02.jpg']
+list4='L4_057.vsi'
+
+image_file1 = showimage(x_size,y_size,lista[0])
+image_file2 = showimage(x_size,y_size,listb[0])
+image_file3 = showimage(x_size,y_size,list2a[0])
+image_file4 = showimage(x_size,y_size,list2b[0])
+image_file5 = showimage(250,525,list4)
+
+l = tk.Label(window, text='Case Number', bg='#DEB887', font=('Arial', 16), width=30, height=2)
+l.pack()
+
+canvas = tk.Canvas(window, bg='#DEB887', height=605, width=950)
+
+image1 = canvas.create_image(25, 25, anchor='nw',image=image_file1)
+image2 = canvas.create_image(25, y_size+50, anchor='nw',image=image_file2)
+image3 = canvas.create_image(x_size+50, 25, anchor='nw',image=image_file3)
+image4 = canvas.create_image(x_size+50, y_size+50, anchor='nw',image=image_file4)
+image5 = canvas.create_image(2*x_size+75, 25, anchor='nw',image=image_file5)
+
+#Button1
+on_hit = 0
+def bnext():
+    global on_hit
+    global image_file1
+    if on_hit != len(lista)-1:
+        on_hit += 1
+    else:
+        on_hit = 0
+    image_file1 = showimage(x_size,y_size,lista[on_hit])
+    image1 = canvas.create_image(25, 25, anchor='nw',image=image_file1)
+
+b = tk.Button(window, text='Next', font=('Arial', 12), width=5, height=1, command=bnext)
+b.place(x=300,y=300)
+
+def bback():
+    global on_hit
+    global image_file1
+    if on_hit != 0:
+        on_hit -= 1
+    else:
+        on_hit = len(lista)-1
+    image_file1 = showimage(x_size,y_size,lista[on_hit])
+    image1 = canvas.create_image(25, 25, anchor='nw',image=image_file1)
+
+b = tk.Button(window, text='Back', font=('Arial', 12), width=5, height=1, command=bback)
+b.place(x=35,y=300)
+#Button
+
+#Button2
+on_hit2 = 0
+def bnext2():
+    global on_hit2
+    global image_file2
+    if on_hit2 != len(listb)-1:
+        on_hit2 += 1
+    else:
+        on_hit2 = 0
+    image_file2 = showimage(x_size,y_size,listb[on_hit2])
+    image2 = canvas.create_image(25, y_size+50, anchor='nw',image=image_file2)
+
+b2 = tk.Button(window, text='Next', font=('Arial', 12), width=5, height=1, command=bnext2)
+b2.place(x=300,y=575)
+
+def bback2():
+    global on_hit2
+    global image_file2
+    if on_hit2 != 0:
+        on_hit2 -= 1
+    else:
+        on_hit2 = len(listb)-1
+    image_file2 = showimage(x_size,y_size,listb[on_hit2])
+    image2 = canvas.create_image(25, y_size+50, anchor='nw',image=image_file2)
+
+b2 = tk.Button(window, text='Back', font=('Arial', 12), width=5, height=1, command=bback2)
+b2.place(x=35,y=575)
+#Button
+
+#Button3
+on_hit3 = 0
+def bnext3():
+    global on_hit3
+    global image_file3
+    if on_hit3 != len(list2a)-1:
+        on_hit3 += 1
+    else:
+        on_hit3 = 0
+    image_file3 = showimage(x_size,y_size,list2a[on_hit3])
+    image3 = canvas.create_image(x_size+50, 25, anchor='nw',image=image_file3)
+
+b3 = tk.Button(window, text='Next', font=('Arial', 12), width=5, height=1, command=bnext3)
+b3.place(x=630,y=300)
+
+def bback3():
+    global on_hit3
+    global image_file3
+    if on_hit3 != 0:
+        on_hit3 -= 1
+    else:
+        on_hit3 = len(list2a)-1
+    image_file3 = showimage(x_size,y_size,list2a[on_hit3])
+    image3 = canvas.create_image(x_size+50, 25, anchor='nw',image=image_file3)
+
+b3 = tk.Button(window, text='Back', font=('Arial', 12), width=5, height=1, command=bback3)
+b3.place(x=370,y=300)
+#Button
+
+#Button4
+on_hit4 = 0
+def bnext4():
+    global on_hit4
+    global image_file4
+    if on_hit4 != len(list2b)-1:
+        on_hit4 += 1
+    else:
+        on_hit4 = 0
+    image_file4 = showimage(x_size,y_size,list2b[on_hit4])
+    image4 = canvas.create_image(x_size+50, y_size+50, anchor='nw',image=image_file4)
+
+b4 = tk.Button(window, text='Next', font=('Arial', 12), width=5, height=1, command=bnext4)
+b4.place(x=630,y=575)
+
+def bback4():
+    global on_hit4
+    global image_file4
+    if on_hit4 != 0:
+        on_hit4 -= 1
+    else:
+        on_hit4 = len(list2b)-1
+    image_file4 = showimage(x_size,y_size,list2b[on_hit4])
+    image4 = canvas.create_image(x_size+50, y_size+50, anchor='nw',image=image_file4)
+
+b4 = tk.Button(window, text='Back', font=('Arial', 12), width=5, height=1, command=bback4)
+b4.place(x=370,y=575)
+#Button
+
+canvas.pack()
+
+window.mainloop()
