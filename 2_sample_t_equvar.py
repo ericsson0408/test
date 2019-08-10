@@ -2,11 +2,6 @@ import numpy as np
 from scipy.stats import t
 from math import *
 
-
-a=[-3,-1,0,1,3]
-b=[5,7,9,11,13]
-
-
 def t_test(x,y,var=True,tail=2):
     #insert 2 data; var and tail are default as equal and two, respectively
     nx = len(x)
@@ -37,4 +32,7 @@ def t_test(x,y,var=True,tail=2):
     p_value = area*tail
     return t_score, p_value
 
+
+a=[-3,-1,0,1,3]
+b=[5,7,9,11,13]
 print(t_test(a,b,False))
