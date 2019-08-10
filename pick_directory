@@ -1,0 +1,9 @@
+import os
+from tkinter.filedialog import *
+
+
+default_dir = r"C:\Users\MSOC\Desktop\FOOD\Food"  # 设置默认打开目录
+fname = askopenfilename(title=u"選擇文件",initialdir=(os.path.expanduser(default_dir)))
+
+
+print (fname)  # 返回文件全路径
