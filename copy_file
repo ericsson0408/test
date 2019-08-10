@@ -1,0 +1,17 @@
+from shutil import copy
+
+a='D:\\MSoC\\AI_Food_Image_Dataset_scale\\A01\\'
+b=[]
+
+myfile=open('test_list.txt')
+count=0
+for i in myfile:
+    if 'A01' in i:
+        i = i.replace("\n", "")
+        b.append(i)
+        count+=1
+    if count>100:
+        break
+for i in b:
+    c=a+i
+    copy(c, 'C:\\Users\\user\\Desktop\\3set\\test')
